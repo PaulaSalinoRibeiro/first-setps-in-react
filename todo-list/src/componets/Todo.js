@@ -11,10 +11,15 @@ function Todo() {
     setItems([...items, item]);
   }
 
+  function itemForDelete(item) {
+    let itemsFilter = items.filter(it => it.id !==item.id)
+    setItems(itemsFilter)
+  }
+
   return (
     <div>
       <TodoForm onAddItem={onAddItem}></TodoForm>
-      <List items={items}></List>
+      <List itemForDelete={itemForDelete} items={items}></List>
     </div>
   );
 }
