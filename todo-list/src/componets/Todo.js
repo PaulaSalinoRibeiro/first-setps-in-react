@@ -16,10 +16,21 @@ function Todo() {
     setItems(itemsFilter)
   }
 
+  function onDone(item) {
+    let update = items.map(i => {
+      if(i.id === item.id) {
+        i.done = !i.done
+      }
+      return i
+    })
+    setItems(update)
+    
+  }
+
   return (
     <div>
       <TodoForm onAddItem={onAddItem}></TodoForm>
-      <List itemForDelete={itemForDelete} items={items}></List>
+      <List onDone={onDone} itemForDelete={itemForDelete} items={items}></List>
     </div>
   );
 }
